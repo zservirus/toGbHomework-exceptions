@@ -5,6 +5,7 @@ import model.persona.TestStringPersona;
 import model.persona.jobfiles.FileHandler;
 import model.persona.jobfiles.Writable;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -30,14 +31,19 @@ public class Service {
                         chekedLastName = true;
                     }
                 }
-                save(persona.parcingData(testStringPersona.splitString(s)),chekedLastName);
+                try {
+                    save(persona.parcingData(testStringPersona.splitString(s)),chekedLastName);
+                }catch (IOException e){
+                    System.out.println(e);
+                }
+
                 return true;
             }
         }
         return false;
     }
 
-    private void save(String dataStr,Boolean append) {
+    private void save(String dataStr,Boolean append) throws IOException{
         //System.out.println(pathDir+nameTree);
         Writable writable = new FileHandler();
         writable.save(dataStr,persona.getName(),append);

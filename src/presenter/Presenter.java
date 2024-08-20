@@ -3,6 +3,9 @@ package presenter;
 import model.service.Service;
 import view.View;
 
+import javax.imageio.IIOException;
+import java.io.IOException;
+
 
 public class Presenter {
     private View view;
@@ -13,12 +16,10 @@ public class Presenter {
     }
 
 
-    public void CommandNewPerson(String s) {
-      if (!service.addPersona(s)){
-          view.start();
-      }
-
-
+    public void CommandNewPerson(String s)  {
+     if (!service.addPersona(s)){
+              view.start();
+       }
     }
 
 }

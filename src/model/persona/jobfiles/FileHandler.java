@@ -29,7 +29,7 @@ public class FileHandler implements Writable {
 
 
     @Override
-    public boolean save(String str, String fileName,Boolean append) {
+    public boolean save(String str, String fileName,Boolean append) throws IOException {
         fileName = fileName+".txt";
         try {
             if (append == true){
@@ -41,9 +41,9 @@ public class FileHandler implements Writable {
                 System.out.println("Создали файл:" + fileName);
                 }
             return true;
-        } catch (IOException ex) {
-            // Handle exception
-            return false;
+        } catch (IOException e) {
+            System.out.println(e);
+            throw e;
         }
 
     }
