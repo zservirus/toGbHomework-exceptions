@@ -3,13 +3,13 @@ package view;
 import presenter.Presenter;
 import view.menu.StartMenu;
 
-import java.util.Map;
+
 import java.util.Scanner;
 
 public class ConsoleUI implements View{
     private Scanner scanner ;
     private Presenter presenter;
-    private boolean workMenuStart = true, workMenuEditTree = true, workMenuEditItemTree = true;
+    private boolean workMenuStart = true;
     private StartMenu startMenu;
 
     public ConsoleUI() {
@@ -30,32 +30,17 @@ public class ConsoleUI implements View{
                     startMenu.run(Integer.parseInt(choice));
                 }
             }catch (Exception e){
-
+                System.out.println("Быберите пунткты меню...введите 1-2");
             }
-            // while (workMenuEdit) {
-               // System.out.println(editTreeMenu.menu());
-               // String choiceEditTree = scanner.nextLine();
-               // editTreeMenu.run(Integer.parseInt(choiceEditTree));
-           // }
-            //workMenuEditTree = true;
-            //workMenuStart = true;
         }
     }
 
     public void finishMenuStart() {
-        workMenuEditTree = false;
+        //workMenuEditTree = false;
         workMenuStart = false;
-        workMenuEditItemTree = false;
+        //workMenuEditItemTree = false;
         System.out.println("--------Программа завершена!--------");
 
-    }
-
-    public void falureListinConsole(Map<String,String> falureList){
-        for ( Map.Entry<String, String> entry : falureList.entrySet() ) {
-            String key = entry.getKey();
-            String value = entry.getValue();
-            System.out.println(key + " : " + value);
-        }
     }
 
     @Override
